@@ -1,4 +1,6 @@
-int atoi(const char *nptr)
+#include "libft.h"
+
+int ft_atoi(const char *nptr)
 {
     int res;
     int sign;
@@ -12,9 +14,9 @@ int atoi(const char *nptr)
         sign = -sign;
         nptr++;
     }
-    while (isdigit(*nptr))
+    while (ft_isdigit(*nptr))
     {
-        res = res * 10 + (*nptr + 48);
+        res = res * 10 + (*nptr - 48);
         nptr++;
     }
     return (res * sign);

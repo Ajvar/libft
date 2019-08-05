@@ -1,19 +1,36 @@
-//#include "libft.h"
+#include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int strcmp(const char *s1, const char *s2)
+void *ft_memmove(void *dest, const void *src, size_t n)
 {
-    while (*s1 == *s2)
-    {
-        if (*s1 == '\0')
-            return (0);
-        s1++;
-        s2++;
-    }
-    return (*s1 - *s2);
+  int i;
+  unsigned char *cpy;
+
+  i = 0;
+  void *tmp = malloc(ft_strlen((char)src);
+  while (cpy[i])
+  {
+    (unsigned char*)tmp[i] = cpy[i];
+    i++;
+  }
+  printf("%s",tmp);
+  return (dest);
 }
 
-int main (void)
+int main(void)
 {
-  printf("%d", strcmp("no", "na"));
+  char *dest = malloc(100);
+  char *src = "kaka";
+  //char *destdeux 
+
+  dest = ft_memmove(dest, src, 3);
+ printf("%s", dest);
+  //dest[0] = 'l';
+  //dest[1] = 'o';
+  //dest[2] = '\0';
+ // printf("%d", ft_memcmp("a", "b", 3));
+ //free(dest);
+ //free(destdeux);
 }
