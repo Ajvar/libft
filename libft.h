@@ -30,5 +30,21 @@ char *ft_strdup(const char *s);
 int ft_memcmp(const void *s1, const void *s2, size_t n);
 void *ft_memchr(const void *s, int c, size_t n);
 void *ft_memmove(void *dest, const void *src, size_t n);
+void *ft_memcpy(void *dest, const void *src, size_t n);
+void *memccpy(void *dest, const void *src, int c, size_t n);
+void * ft_memalloc(size_t size);
+void	ft_memdel(void **ap);
+char * ft_strnew(size_t size);
+void ft_strdel(char **as);
+void ft_strclr(char *s);
+void ft_striter(char *s, void (*f)(char *));
+void ft_striteri(char *s, void (*f)(unsigned int,
+char *));
+char * ft_strmap(char const *s, char (*f)(char));
+void ft_putchar(char c);
+void ft_putstr(char const *s);
+char * ft_strsub(char const *s, unsigned int
+start, size_t len);
+
 
 #endif

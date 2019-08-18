@@ -1,36 +1,34 @@
 #include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+//#include <stdlib.h>
+//#include <string.h>
 
-void *ft_memmove(void *dest, const void *src, size_t n)
+char * ft_strsub(char const *s, unsigned int
+start, size_t len)
 {
-  int i;
-  unsigned char *cpy;
+    char *res;
+    int i;
 
-  i = 0;
-  void *tmp = malloc(ft_strlen((char)src);
-  while (cpy[i])
-  {
-    (unsigned char*)tmp[i] = cpy[i];
-    i++;
-  }
-  printf("%s",tmp);
-  return (dest);
+    if(!(res = malloc(len + 1)))
+        return (NULL);
+    i = 0;
+    while (len > 0)
+    {
+        res[i] = s[start];
+        start++;
+        len--;
+        i++;
+    }
+    *res = '\0';
+    return (res);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-  char *dest = malloc(100);
-  char *src = "kaka";
-  //char *destdeux 
+    (void)argc;
+    char *sub = ft_strsub(argv[1], 2, 3);
+    printf("%s",sub);
+    free(sub);
 
-  dest = ft_memmove(dest, src, 3);
- printf("%s", dest);
-  //dest[0] = 'l';
-  //dest[1] = 'o';
-  //dest[2] = '\0';
- // printf("%d", ft_memcmp("a", "b", 3));
- //free(dest);
- //free(destdeux);
+   return 0;
 }
