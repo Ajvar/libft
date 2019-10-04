@@ -1,34 +1,38 @@
-#include "libft.h"
 #include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
+#include <stdlib.h>
 
-char * ft_strsub(char const *s, unsigned int
-start, size_t len)
+int ft_countword(char *s, char c)
 {
-    char *res;
     int i;
-
-    if(!(res = malloc(len + 1)))
-        return (NULL);
+    
     i = 0;
-    while (len > 0)
+    while(*s)
     {
-        res[i] = s[start];
-        start++;
-        len--;
+        while(*s == c)
+            s++;
         i++;
+        while(*s != c && *s)
+            s++;
+        
     }
-    *res = '\0';
-    return (res);
+return (i);
 }
 
-int main(int argc, char **argv)
+char **ft_strsplit(char *s, char c)
 {
-    (void)argc;
-    char *sub = ft_strsub(argv[1], 2, 3);
-    printf("%s",sub);
-    free(sub);
+    char **res;
 
-   return 0;
+    res = malloc(sizeof(*res) * ft_countword(s,c));
+    
+
+    return (res);
+}
+int main()
+{
+    char *s = "Hello *** world";
+    char c = '*';
+    int i = ft_countword(s,c);
+    printf("%d",i);
+    char **res = ft_strsplit(s,c);
+    free(res);
 }
