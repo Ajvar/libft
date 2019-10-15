@@ -1,34 +1,23 @@
-
-#include <stddef.h>
-
-int ft_count_digit(int n)
-{
-    int res;
-
-    while (n > 0)
-    {
-        res++;
-        n /= 10;
-    }
-    return (res);
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/09 17:02:40 by jcueille          #+#    #+#             */
+/*   Updated: 2019/10/09 17:56:12 by jcueille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 char *ft_itoa(int n)
 {
-    char *res;
-    int i;
+	char *res;
+	int div;
 
-    if (n == -2147483648)
-        return ("-2147483648");
-    if (!(res = malloc(ft_count_digit(n) + 1)))
-        return (NULL);
-    i = 0;
-    if (n < 0)
-    {
-        res[0] = '-';
-        i++;
-        n *= -1;
-    }
-
-    while (i < )
+	div = 1000000000;
+	while (div > n)
+		div /= 10;
+	res = malloc
+	
 }

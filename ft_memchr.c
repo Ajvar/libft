@@ -1,17 +1,25 @@
-#include <stddef.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/07 18:01:51 by jcueille          #+#    #+#             */
+/*   Updated: 2019/10/07 18:13:35 by jcueille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void *ft_memchr(const void *s, int c, size_t n)
+#include <unistd.h>
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-  const unsigned char *str;
-
-  str = s;
-  while (*str && n > 0)
-  {
-    if (*str == (unsigned char)c)  
-      return ((void*)s);
-    (unsigned char*)s++;   
-    str++;
-    n--;
-  }
-    return (NULL);
+	while (n > 0)
+	{
+		if ((unsigned char)c == *(unsigned char*)s)
+			return ((void*)s);
+		n--;
+		s++;
+	}
+	return (NULL);
 }

@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 15:32:20 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/08 16:06:03 by jcueille         ###   ########.fr       */
+/*   Created: 2019/10/09 10:39:16 by jcueille          #+#    #+#             */
+/*   Updated: 2019/10/15 14:09:09 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stddef.h>
+#include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char		*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int i;
-	int j;
+	int		i;
+	char	*res;
 
-	if (!(*needle))
-		return ((char *)haystack);
+	if (start > ft_strlen(s))
+		return (NULL);
 	i = 0;
-	while (haystack[i] && len > 0)
-	{
-		j = 0;
-		while (haystack[i] == needle[j])
-		{
-			if (needle[j] == '\0')
-				return ((char*)haystack + (i - j));
-			j++;
-			i++;
-		}
-		i++;
-		len--;
-	}
-	return (NULL);
+	res = ft_strdup(s);
+	res = &res[start];
+	res[len + 1] = '\0';
+	return (res);
 }

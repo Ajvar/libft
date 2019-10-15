@@ -1,18 +1,29 @@
-#include <stddef.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/08 13:51:37 by jcueille          #+#    #+#             */
+/*   Updated: 2019/10/08 13:57:50 by jcueille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strrchr(const char *s, int c)
+#include <unistd.h>
+
+char	*ft_strrchr(const char *s, int c)
 {
-    const char *tmp;
+	char *res;
 
-    tmp = NULL;
-    while (*s)
-    {
-        if (*s == c)
-            tmp = s;
-        s++;
-    }
-
-    if (c == '\0')
-        return ((char*)s);
-    return ((char *)tmp);
+	res = NULL;
+	while (*s)
+	{
+		if (*s == c)
+			res = (char *)s;
+		s++;
+	}
+	if (*s == c)
+		res = (char *)s;
+	return (res);
 }

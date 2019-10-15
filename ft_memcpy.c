@@ -1,13 +1,27 @@
-void *memcpy(void *dest, const void *src, size_t n)
-{
-    char *cdest = (char*)dest;
-    char *csrc = (char*)src;
-    int i;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/07 15:33:47 by jcueille          #+#    #+#             */
+/*   Updated: 2019/10/09 10:35:38 by jcueille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-    i = 0;
-    while(i < n)
-    {
-        cdest[i] = csrc[i];
-        i++;
-    }
+#include <unistd.h>
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	int i;
+
+	i = 0;
+	while (n > 0)
+	{
+		*(char *)(dst + i) = *(char *)(src + i);
+		n--;
+		i++;
+	}
+	return (dst);
 }

@@ -1,14 +1,23 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/07 15:28:18 by jcueille          #+#    #+#             */
+/*   Updated: 2019/10/15 09:26:49 by jcueille         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_bzero(void *s, size_t n)
-{   
-    unsigned char c = '\0';
-    unsigned char *tmp = s;
+#include <unistd.h>
 
-    while (n > 0)
-    {
-        *tmp = c;
-        tmp++;
-        n--;
-    }
+void	ft_bzero(void *s, size_t n)
+{
+	while (n > 0)
+	{
+		*(char*)s = 0;
+		n--;
+		s++;
+	}
 }
