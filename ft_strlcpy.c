@@ -6,17 +6,21 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:30:38 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/15 15:56:40 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/16 09:39:26 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stddef.h>
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	unsigned int i;
 
+	if (dstsize == 0)
+	{
+		return (ft_strlen(src));
+	}
 	i = 0;
 	while (src[i] && i < dstsize - 1)
 	{

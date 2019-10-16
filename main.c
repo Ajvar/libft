@@ -90,37 +90,6 @@ void ft_lstadd_back(t_list **alst, t_list *new)
 	curr->next = new;
 }*/
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	int i;
-
-	i = 0;
-	while (src[i] && i < (dstsize - 1))
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(src));
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	unsigned int i;
-	unsigned int res;
-
-	res = 0;
-	i = 0;
-	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
-	{
-		res = s1[i] - s2[i];
-		if (res != 0)
-			return (res);
-		i++;
-	}
-	return (0);
-}
-
 char		*ft_strdup(const char *s1)
 {
 	char	*res;
@@ -178,9 +147,128 @@ char		*ft_strtrim(char const *s1, char const *set)
 	return (res);
 }
 
+void	ft_fill(char *s, char c, char **res)
+{
+	int i;
+	int x;
+	int l;
+
+	x = 0;
+	i = 0;
+	l = 0;
+	while (*s)
+	{
+		i = 0;
+		while (*s == c)
+			s++;
+		while (*s != c && *s)
+		{
+			res[l][i] = *s;
+			s++;
+			i++;
+		}
+		res[l][i] = '\0';
+		l++;
+	}
+}
+
+void	ft_countchar(char *s, char c, char **res)
+{
+	int x;
+
+	while (*s)
+	{
+		x = 0;
+		while (*s == c)
+			s++;
+		while (*s != c && *s)
+		{
+			s++;
+			x++;
+		}
+		*res = malloc(x + 1);
+		res++;
+	}
+}
+
+int		ft_countword(char *s, char c)
+{
+	int i;
+
+	i = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		i++;
+		while (*s != c && *s)
+			s++;
+	}
+	return (i);
+}
+
+char	**ft_split(char *s, char c)
+{
+	char **res;
+	char i;
+
+	i = 0;
+	res = malloc(sizeof(*res) * ft_countword(s, c) + 1);
+	ft_countchar(s, c, res);
+	ft_fill(s, c, res);
+	return (res);
+}
+
+int ft_countdigit(int n)
+{
+	int i;
+
+	i = 0;
+	while (n > 0)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char *ft_itoa(int n)
+{
+	char *res;
+	int div;
+	int i;
+	int sign;
+
+	sign = 0;
+	i = 0;
+	div = 1000000000;
+	if (n == -2147483648)
+	{
+		return ("-2147483648");
+	}
+		if (n < 0)
+	{
+		sign++;
+		n *= -1;
+	}
+	while (div > n)
+		div /= 10;
+	res = malloc(ft_countdigit(n));
+	if (sign > 0)
+	{	
+		res[i] = '-';
+		i++;
+	}
+	while (n > 0)
+	{
+		res[i] = ((n / div) + 48 );
+		i++;
+		n /= 10;
+	}
+	return (res);
+}
 
 int main()
 {
-	char *str = ft_strtrim("    ", " ");
-	printf("%s", str);
+printf("%s", ft_itoa(-2147483648));
 }

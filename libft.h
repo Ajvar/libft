@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 12:24:21 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/15 17:39:15 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/16 16:35:46 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,14 @@ void	*ft_calloc(size_t count, size_t size);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 char	**ft_split(char *s, char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char		*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(char const *s1, char const *set);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_itoa(int n);
+
 #endif

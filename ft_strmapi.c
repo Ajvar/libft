@@ -6,20 +6,20 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 09:26:35 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/15 11:02:06 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/16 12:24:41 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "libft.h"
 
-char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char				*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
-	char	*res;
+	unsigned int	i;
+	char			*res;
 
 	i = 0;
-	res = ft_strdup(s);
+	res = ft_strdup((char *)s);
 	if (!(res))
 		return (NULL);
 	while (res[i])

@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:00:26 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/15 16:50:26 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/16 10:55:33 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
 	{
-		res = s1[i] - s2[i];
+		res = (unsigned char)s1[i] - (unsigned char)s2[i];
 		if (res != 0)
 			return (res);
 		i++;
