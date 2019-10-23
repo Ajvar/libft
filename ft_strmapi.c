@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 09:26:35 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/16 12:24:41 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/22 17:03:07 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*res;
 
 	i = 0;
+	if (!s || !f)
+		return (NULL);
 	res = ft_strdup((char *)s);
 	if (!(res))
 		return (NULL);

@@ -6,40 +6,46 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:34:11 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/15 18:18:36 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/23 09:43:09 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char		*ft_strtrim(char const *s1, char const *set)
+static int	ft_start(char const *set, char const *s1)
 {
 	int		i;
-	int		j;
-	char	*res;
+	int		k;
 
-	res = ft_strdup(s1);
+	k = 0;
 	i = 0;
-	j = 0;
-	while (set[i] && *res)
+	while (set[i] && s1[k])
 	{
-		if (set[i] == (char)*res)
+		if (set[i] == (char)s1[k])
 		{
-			res++;
+			k++;
 			i = 0;
 			continue ;
 		}
 		i++;
 	}
-	if(!(*res))
-		return (res);
-	while (res[j])
+	return (k);
+}
+
+static int	ft_end(char const *set, char const *s1)
+{
+	int		j;
+	int		i;
+
+	j = 0;
+	while (s1[j])
 		j++;
 	j--;
 	i = 0;
 	while (set[i])
 	{
-		if (set[i] == (char)res[j])
+		if (set[i] == (char)s1[j])
 		{
 			j--;
 			i = 0;
@@ -47,12 +53,25 @@ char		*ft_strtrim(char const *s1, char const *set)
 		}
 		i++;
 	}
-	res[j + 1] = '\0';
+	return (j);
+}
+
+char		*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		k;
+	int		j;
+	char	*res;
+
+	if (!s1 || !set)
+		return (NULL);
+	i = 0;
+	j = 0;
+	i = 0;
+	k = ft_start(set, s1);
+	if (!(s1[k]))
+		return (ft_memcpy(res = malloc(1), "\0", 1));
+	j = ft_end(set, s1);
+	res = ft_substr(s1, k, j - k + 1);
 	return (res);
 }
-/*
-int main()
-{
-	char *str = ft_strtrim("     ", "lo");
-	printf("%s", str);
-}*/

@@ -6,17 +6,23 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:02:40 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/16 16:35:10 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/17 11:57:15 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
-int		ft_countdigit(int n)
+int			ft_countdigit(int n)
 {
 	int i;
 
 	i = 0;
+	if (n < 0)
+	{
+		n *= -1;
+		i++;
+	}
 	while (n > 0)
 	{
 		n /= 10;
@@ -25,40 +31,29 @@ int		ft_countdigit(int n)
 	return (i);
 }
 
-int		ft_itoabis(int *n, int *div, int sign)
-{
-	if (*n < 0)
-	{
-		sign++;
-		*n *= -1;
-	}
-	while (*div > *n)
-		*div /= 10;
-	return (sign);
-}
-
-
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char	*res;
-	int		div;
 	int		i;
-	int		sign;
 
-	sign = 0;
-	i = 0;
-	div = 1000000000;
+	i = ft_countdigit(n);
 	if (n == -2147483648)
-		return ("-2147483648");
-	sign = ft_itoabis(&n, &div, sign);
-	res = malloc(ft_countdigit(n));
-	if (sign > 0)
-		res[i++] = '-';
+		return (ft_memcpy(res = ft_calloc(12, 1), "-2147483648", 12));
+	if (n == 0)
+		return (ft_memcpy(res = ft_calloc(2, 1), "0", 2));
+	if (!(res = ft_calloc(i + 1, sizeof(char))))
+		return (NULL);
+	if (n < 0)
+	{
+		*res = '-';
+		n *= -1;
+	}
+	i--;
 	while (n > 0)
 	{
-		res[i] = ((n / div) + 48);
-		i++;
-		n /= 10;
+		res[i] = 48 + (n % 10);
+		n = n / 10;
+		i--;
 	}
 	return (res);
 }

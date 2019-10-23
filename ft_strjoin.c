@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 11:12:31 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/16 14:34:22 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/22 16:59:28 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	char	*res;
 
+	if (!s1 || !s2)
+		return (NULL);
 	if (!(res = malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
 		return (NULL);
 	i = 0;

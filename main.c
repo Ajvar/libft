@@ -35,15 +35,31 @@ void		*ft_calloc(size_t count, size_t size)
 	return (res);
 }
 
-/*struct s_list
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	int i;
+
+	i = 0;
+	while (n > 0)
+	{
+		*(char *)(dst + i) = *(char *)(src + i);
+		n--;
+		i++;
+	}
+	return (dst);
+}
+
+struct s_list
 {
 	void*content;
 	struct s_list   *next;
 };
-*/
-/*void ft_lstadd_front(t_list **alst, t_list *new)
+
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	new->next = *alst;
+	if (new)
+		new->next = *alst;
+	*alst = new;
 }
 
 
@@ -64,211 +80,168 @@ t_list *ft_lstlast(t_list *lst)
 	t_list *curr;
 
 	curr = lst;
-	while (curr-> next != NULL)
-		curr = curr->next;
+	if (curr)
+	{	while (curr-> next != NULL)
+			curr = curr->next;
+	}
 	return (curr);
 }
 
-int ft_lstsize(t_list *lst)
+int			ft_lstsize(t_list *lst)
 {
-	int i;
+	int		i;
 
-	i = 1;
-	while (lst->next != NULL)
+	i = 0;
+	if (lst)
 	{
-		lst = lst->next;
 		i++;
+		while (lst->next != NULL)
+		{
+			lst = lst->next;
+			i++;
+		}
 	}
 	return (i);
 }
+
 
 void ft_lstadd_back(t_list **alst, t_list *new)
 {
 	t_list *curr;
 
-	curr = ft_lstlast(alst);
-	curr->next = new;
-}*/
-
-char		*ft_strdup(const char *s1)
+	if (new)
+	{
+		curr = ft_lstlast(*alst);
+		curr->next = new;
+	}
+}void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	char	*res;
+	if (lst && del)
+	{
+		del(lst->content);
+		free(lst);
+	}
+}
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	t_list *curr;
+
+	curr = lst;
+	if (lst && f)
+	{
+		while (curr->next)
+		{
+			f(curr->content);
+			curr = curr->next;
+		}
+	}
+}
+
+void    ft_modify_list_with_d(void *elem)
+{
+        int             len;
+        char            *content;
+
+        len = 0;
+        content = (char *)elem;
+        while (content[len])
+        {
+                content[len++] = 'd';
+        }
+}
+
+void    ft_print_result(t_list *elem)
+{
+        int             len;
+
+        while (elem)
+        {
+                len = 0;
+                while (((char *)elem->content)[len])
+                        len++;
+                write(1, elem->content, len);
+                write(1, "\n", 1);
+                elem = elem->next;
+        }
+}
+
+t_list  *ft_lstnewone(void const *content)
+{
+        t_list  *elem;
+
+        elem = (t_list *)malloc(sizeof(t_list));
+        if (!elem)
+                return (NULL);
+        if (!content)
+        {
+                elem->content = NULL;
+        }
+        else
+        {
+                if (!(elem->content = malloc(sizeof(*(elem->content)) * sizeof(content))))
+                        return (NULL);
+                elem->content = ft_memcpy(elem->content, content, sizeof(content));
+        }
+        elem->next = NULL;
+        return (elem);
+}
+void    ft_del(void *content)
+{
+        free(content);
+}
+
+void *f(void* content)
+{
+	*(char*)content += 2;
+	return content;
+}
+
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*res;
+	t_list	*maillon;
+	t_list	*tmp;
 	int		i;
 
 	i = 0;
-	if (!(res = malloc(ft_strlen(s1) + 1)))
+	while (lst && f && del)
 	{
-		return (NULL);
-	}
-	while (s1[i])
-	{
-		res[i] = s1[i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
-}
-
-
-char		*ft_strtrim(char const *s1, char const *set)
-{
-	int		i;
-	int		j;
-	char	*res;
-
-	res = ft_strdup(s1);
-	i = 0;
-	j = 0;
-	while (set[i] && *res)
-	{
-		if (set[i] == (char)*res)
-		{
-			res++;
-			i = 0;
-			continue ;
-		}
-		i++;
-	}
-	while (res[j])
-		j++;
-	j--;
-	i = 0;
-	while (set[i])
-	{
-		if (set[i] == (char)res[j])
-		{
-			j--;
-			i = 0;
-			continue ;
-		}
-		i++;
-	}
-	res[j + 1] = '\0';
-	return (res);
-}
-
-void	ft_fill(char *s, char c, char **res)
-{
-	int i;
-	int x;
-	int l;
-
-	x = 0;
-	i = 0;
-	l = 0;
-	while (*s)
-	{
-		i = 0;
-		while (*s == c)
-			s++;
-		while (*s != c && *s)
-		{
-			res[l][i] = *s;
-			s++;
-			i++;
-		}
-		res[l][i] = '\0';
-		l++;
-	}
-}
-
-void	ft_countchar(char *s, char c, char **res)
-{
-	int x;
-
-	while (*s)
-	{
-		x = 0;
-		while (*s == c)
-			s++;
-		while (*s != c && *s)
-		{
-			s++;
-			x++;
-		}
-		*res = malloc(x + 1);
-		res++;
-	}
-}
-
-int		ft_countword(char *s, char c)
-{
-	int i;
-
-	i = 0;
-	while (*s)
-	{
-		while (*s == c)
-			s++;
-		i++;
-		while (*s != c && *s)
-			s++;
-	}
-	return (i);
-}
-
-char	**ft_split(char *s, char c)
-{
-	char **res;
-	char i;
-
-	i = 0;
-	res = malloc(sizeof(*res) * ft_countword(s, c) + 1);
-	ft_countchar(s, c, res);
-	ft_fill(s, c, res);
-	return (res);
-}
-
-int ft_countdigit(int n)
-{
-	int i;
-
-	i = 0;
-	while (n > 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
-
-char *ft_itoa(int n)
-{
-	char *res;
-	int div;
-	int i;
-	int sign;
-
-	sign = 0;
-	i = 0;
-	div = 1000000000;
-	if (n == -2147483648)
-	{
-		return ("-2147483648");
-	}
-		if (n < 0)
-	{
-		sign++;
-		n *= -1;
-	}
-	while (div > n)
-		div /= 10;
-	res = malloc(ft_countdigit(n));
-	if (sign > 0)
-	{	
-		res[i] = '-';
-		i++;
-	}
-	while (n > 0)
-	{
-		res[i] = ((n / div) + 48 );
-		i++;
-		n /= 10;
+		maillon = ft_lstnew(f(lst->content));
+		if (!maillon)
+			return(NULL);
+		ft_lstadd_back(&res, maillon);
+		tmp = lst->next;
+		ft_lstdelone(lst, del);
+		free(lst);
+		lst = tmp;
 	}
 	return (res);
 }
-
 int main()
 {
-printf("%s", ft_itoa(-2147483648));
+        t_list          *elem;
+        t_list          *elem2;
+        t_list          *elem3;
+        t_list          *elem4;
+		t_list			*newish;
+        char            str [] = "lorem";
+        char            str2 [] = "ipsum";
+        char            str3 [] = "dolor";
+        char            str4 [] = "sit";
+
+        elem = ft_lstnewone(str);
+        elem2 = ft_lstnewone(str2);
+        elem3 = ft_lstnewone(str3);
+        elem4 = ft_lstnewone(str4);
+        alarm(5);
+        if (!elem || !elem2 || !elem3 || !elem4)
+                return (0);
+        elem->next = elem2;
+        elem2->next = elem3;
+        elem3->next = elem4;
+        newish = ft_lstmap(elem, &f, &ft_del);
+        ft_print_result(elem);
+        ft_print_result(newish);
+        return (0);
 }

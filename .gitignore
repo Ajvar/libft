@@ -1,2 +1,7 @@
-
-a.exe
+a.out
+main.c
+gito.sh
+libft.a
+*.json
+*.out
+*.gch

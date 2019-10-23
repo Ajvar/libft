@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 17:32:46 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/22 14:44:09 by jcueille         ###   ########.fr       */
+/*   Created: 2019/10/11 13:48:56 by jcueille          #+#    #+#             */
+/*   Updated: 2019/10/22 11:49:42 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "libft.h"
 
-void		*ft_calloc(size_t count, size_t size)
+int			ft_lstsize(t_list *lst)
 {
 	int		i;
-	void	*res;
 
 	i = 0;
-	if ((res = malloc(count * size)))
+	while (lst)
 	{
-		while (i < (int)count * (int)size)
-		{
-			*(char*)(res + i) = '\0';
-			i++;
-		}
+		lst = lst->next;
+		i++;
 	}
-	return (res);
+	return (i);
 }

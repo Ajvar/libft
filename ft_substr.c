@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 10:39:16 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/16 14:25:30 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/22 17:00:13 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	s_len;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	s_len = ft_strlen(s);
 	if ((res = (char *)ft_calloc(len + 1, sizeof(*res))) == NULL)
 		return (NULL);

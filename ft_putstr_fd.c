@@ -6,20 +6,15 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 09:52:50 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/16 11:59:00 by jcueille         ###   ########.fr       */
+/*   Updated: 2019/10/22 16:29:13 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <unistd.h>
 #include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	while (*s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
+	if (s)
+		write(fd, s, sizeof(char) * ft_strlen(s));
 }

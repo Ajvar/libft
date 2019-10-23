@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 17:32:46 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/22 14:44:09 by jcueille         ###   ########.fr       */
+/*   Created: 2019/10/18 15:22:47 by jcueille          #+#    #+#             */
+/*   Updated: 2019/10/23 10:51:59 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "libft.h"
 
-void		*ft_calloc(size_t count, size_t size)
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		i;
-	void	*res;
+	t_list	*res;
+	t_list	*maillon;
+	t_list	*tmp;
 
-	i = 0;
-	if ((res = malloc(count * size)))
+	res = NULL;
+	while (lst && f && del)
 	{
-		while (i < (int)count * (int)size)
-		{
-			*(char*)(res + i) = '\0';
-			i++;
-		}
+		maillon = ft_lstnew(f(lst->content));
+		if (!maillon)
+			return(NULL);
+		ft_lstadd_back(&res, maillon);
+		tmp = lst->next;
+		ft_lstdelone(lst, del);
+		free(lst);
+		lst = tmp;
 	}
 	return (res);
 }
