@@ -6,20 +6,21 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 17:47:20 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/15 11:46:19 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:20:54 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stddef.h>
 
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*res;
 	int		i;
 
 	i = 0;
-	if (!(res = malloc(ft_strlen(s1) + 1)))
+	res = malloc(ft_strlen(s1) + 1);
+	if (!(res))
 	{
 		return (NULL);
 	}

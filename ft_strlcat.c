@@ -6,18 +6,18 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 10:08:21 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/18 09:36:35 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:30:36 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include "libft.h"
 
-size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t j;
-	size_t res;
+	size_t	i;
+	size_t	j;
+	size_t	res;
 
 	i = 0;
 	j = 0;

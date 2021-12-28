@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:34:11 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/23 09:43:09 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:23:24 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,15 @@ static int	ft_end(char const *set, char const *s1)
 	return (j);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
 	int		k;
 	int		j;
 	char	*res;
 
 	if (!s1 || !set)
 		return (NULL);
-	i = 0;
 	j = 0;
-	i = 0;
 	k = ft_start(set, s1);
 	if (!(s1[k]))
 		return (ft_memcpy(res = malloc(1), "\0", 1));

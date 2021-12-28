@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 12:14:58 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/23 09:44:33 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:31:52 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list *nxt;
+	t_list	*nxt;
 
 	while (*lst && del)
 	{

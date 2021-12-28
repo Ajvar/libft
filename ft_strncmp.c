@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 14:00:26 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/16 10:55:33 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:18:46 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int i;
-	unsigned int res;
+	unsigned int	i;
+	unsigned int	res;
 
 	res = 0;
 	i = 0;

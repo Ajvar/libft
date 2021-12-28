@@ -6,16 +6,16 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:02:40 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/17 11:57:15 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:30:11 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-int			ft_countdigit(int n)
+int	ft_countdigit(int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n < 0)
@@ -31,7 +31,7 @@ int			ft_countdigit(int n)
 	return (i);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*res;
 	int		i;
@@ -41,7 +41,8 @@ char		*ft_itoa(int n)
 		return (ft_memcpy(res = ft_calloc(12, 1), "-2147483648", 12));
 	if (n == 0)
 		return (ft_memcpy(res = ft_calloc(2, 1), "0", 2));
-	if (!(res = ft_calloc(i + 1, sizeof(char))))
+	res = ft_calloc(i + 1, sizeof(char));
+	if (!(res))
 		return (NULL);
 	if (n < 0)
 	{

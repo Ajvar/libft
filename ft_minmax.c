@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_minmax.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 17:34:13 by jcueille          #+#    #+#             */
-/*   Updated: 2021/12/28 18:29:35 by jcueille         ###   ########.fr       */
+/*   Created: 2021/12/28 17:23:36 by jcueille          #+#    #+#             */
+/*   Updated: 2021/12/28 18:25:45 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	ft_max(int a, int b)
 {
-	void	*ret;
+	if (a < b)
+		return (b);
+	return (a);
+}
 
-	if (!dst && !src)
-		return (0);
-	ret = dst;
-	if (src < dst)
-	{
-		src += len;
-		dst += len;
-		while (len--)
-			*((char*)--dst) = *((char*)--src);
-	}
-	else
-		while (len--)
-			*((char *)dst++) = *((char *)src++);
-	return (ret);
+int	ft_min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

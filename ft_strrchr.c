@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/08 13:51:37 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/08 13:57:50 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:24:13 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *res;
+	char	*res;
 
 	res = NULL;
 	while (*s)

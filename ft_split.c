@@ -6,14 +6,14 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:25:50 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/23 09:42:30 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:23:11 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stddef.h>
 
-static char		*ft_malloc_and_fill(char *s, char c)
+static char	*ft_malloc_and_fill(char *s, char c)
 {
 	char		*res;
 	int			i;
@@ -32,7 +32,7 @@ static char		*ft_malloc_and_fill(char *s, char c)
 	return (res);
 }
 
-static int		ft_countword(char *s, char c)
+static int	ft_countword(char *s, char c)
 {
 	int			i;
 
@@ -51,7 +51,7 @@ static int		ft_countword(char *s, char c)
 	return (i);
 }
 
-char			**ft_split(char *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char		**res;
 	int			i;
@@ -61,7 +61,8 @@ char			**ft_split(char *s, char c)
 		return (NULL);
 	i = 0;
 	words = ft_countword(s, c);
-	if (!(res = (char **)malloc(sizeof(*res) * (words + 1))))
+	res = (char **)malloc(sizeof(*res) * (words + 1));
+	if (!(res))
 		return (NULL);
 	while (*s)
 	{

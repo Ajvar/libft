@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:58:08 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/22 14:40:24 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:19:46 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (n > 0)

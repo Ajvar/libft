@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 12:24:21 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/22 11:54:19 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:20:31 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -37,6 +37,8 @@ int				ft_isascii(int c);
 int				ft_isdigit(int c);
 int				ft_isalpha(int c);
 int				ft_isalnum(int c);
+int				ft_max(int a, int b);
+int				ft_min(int a, int b);
 int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);

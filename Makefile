@@ -24,6 +24,7 @@ ft_strnstr.c \
 ft_strdup.c \
 ft_atoi.c \
 ft_itoa.c \
+ft_minmax.c \
 ft_isalpha.c \
 ft_isdigit.c \
 ft_isalnum.c \

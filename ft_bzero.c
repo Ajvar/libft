@@ -6,7 +6,7 @@
 /*   By: jcueille <jcueille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 15:28:18 by jcueille          #+#    #+#             */
-/*   Updated: 2019/10/15 09:26:49 by jcueille         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:23:35 by jcueille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_bzero(void *s, size_t n)
 {
 	while (n > 0)
 	{
-		*(char*)s = 0;
+		*(char *)s = 0;
 		n--;
 		s++;
 	}
